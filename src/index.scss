@@ -1,0 +1,102 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  // font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+body {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+button {
+  margin-left: 10px;
+  border-radius: 15px;
+  border: 1px solid violet;
+  padding: 0.3em 0.6em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  // background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  h1{
+    color: whitesmoke;
+  }
+
+  h1:hover{
+    color: violet;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+}
+
+.liste {
+  padding-top: 30px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  
+}
+
+.selectList {
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer solid orange;
+  
+  button {
+    margin: 10px;
+  }
+}
+
+.input {
+  width: 250px;
+  height: 25px;
+  border:2px solid violet;
+}
+
+@media only screen and (max-width: 420px) { //was kleiner als 420px ist:
+  .input {
+    width: 150px;
+    height: 20px;
+  }
+  .liste {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 720px) { //was kleiner als 720px ist:
+  .input {
+    width: 200px;
+    height: 20px;
+  }
+  .liste {
+    font-size: 12px;
+  }
+}
