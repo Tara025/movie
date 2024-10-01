@@ -20,23 +20,22 @@ function App() {
           // `https://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`
         );
         const data = await response.json();
-        console.log(data.results)
-        if  (data){
+        console.log(data.results);
+        if (data) {
           setMovies(data.results);
           setLoading(false);
-        }else {
-          setError(true)
+        } else {
+          setError(true);
           setLoading(false);
         }
-
       } catch (error) {
         console.log("Fehler bei der Datenabfrage:", error);
         setError(true);
       }
-  
+
       setLoading(false);
     }
-  
+
     if (searchQuery) {
       fetchData();
     } else {
@@ -53,9 +52,7 @@ function App() {
     <div className="main">
       <h1>Movie-App</h1>
       <SearchBar onSearch={handleSearch} />
-      {!error && (
-        <MovieList movies={movies} onSearch={handleSearch} />
-      )}
+      {!error && <MovieList movies={movies} />}
       {loading && <p>Daten werden geladen...</p>}
       {error && <p>Diesen Titel gibt es nicht</p>}
     </div>

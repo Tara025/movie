@@ -4,8 +4,8 @@
   // font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgb(245, 243, 244);
+  background-color: rgba(0, 44, 0, 0.885);
 }
 
 body {
@@ -54,6 +54,7 @@ button:focus-visible {
 }
 
 .liste {
+  
   padding-top: 30px;
   font-size: 16px;
   display: flex;
@@ -75,11 +76,19 @@ button:focus-visible {
   }
 }
 
+.search{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .input {
   width: 250px;
   height: 25px;
   border:2px solid violet;
 }
+
 
 @media only screen and (max-width: 420px) { //was kleiner als 420px ist:
   .input {
