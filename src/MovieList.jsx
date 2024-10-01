@@ -12,7 +12,11 @@ function MovieList({ movies }) {
     // Setze den Zustand des ausgewählten Films
     setList(movie);
     // Setze den Zustand in der History API (state und url)
-    window.history.pushState({ movie: movie.original_title }, "", `#movie-${movie.id}`);
+    window.history.pushState(
+      { movie: movie.original_title },
+      "",
+      `#movie-${movie.id}`
+    );
   }, []);
 
   // Funktion zum Zurücksetzen der Filmliste
@@ -22,18 +26,18 @@ function MovieList({ movies }) {
   }, []);
 
   // Funktion zum Suchen eines Films
-  const handleSearch = useCallback(
-    (query) => {
-      const foundMovie = movies.find((movie) => movie.original_title === query);
-      if (foundMovie) {
-        setList(foundMovie);
-        window.history.pushState({ movie: foundMovie.original_title }, "", `#movie-${foundMovie.id}`);
-      } else {
-        setList(null);
-      }
-    },
-    [movies]
-  );
+  // const handleSearch = useCallback(
+  //   (query) => {
+  //     const foundMovie = movies.find((movie) => movie.original_title === query);
+  //     if (foundMovie) {
+  //       setList(foundMovie);
+  //       window.history.pushState({ movie: foundMovie.original_title }, "", `#movie-${foundMovie.id}`);
+  //     } else {
+  //       setList(null);
+  //     }
+  //   },
+  //   [movies]
+  // );
 
   // Funktion zum Öffnen des Modals
   const handleImageClick = useCallback((imgSrc) => {
@@ -51,7 +55,9 @@ function MovieList({ movies }) {
     const handlePopState = (event) => {
       if (event.state && event.state.movie) {
         // Wenn ein Movie im State ist, diesen anzeigen
-        const foundMovie = movies.find((movie) => movie.original_title === event.state.movie);
+        const foundMovie = movies.find(
+          (movie) => movie.original_title === event.state.movie
+        );
         setList(foundMovie || null);
       } else {
         // Wenn kein Movie im State ist, gehe zurück zur Filmliste
@@ -83,7 +89,9 @@ function MovieList({ movies }) {
           <img
             src={`${imgURL}${imgSize}${list.poster_path}`}
             alt={`Poster`}
-            onClick={() => handleImageClick(`${imgURL}${imgSizeGreat}${list.poster_path}`)} // Öffne Modal
+            onClick={() =>
+              handleImageClick(`${imgURL}${imgSizeGreat}${list.poster_path}`)
+            } // Öffne Modal
             style={{ cursor: "pointer" }}
           />
           <p>{list.overview}</p>
@@ -91,7 +99,9 @@ function MovieList({ movies }) {
         </div>
 
         {/* Modal wird angezeigt, wenn isModalOpen true ist */}
-        {isModalOpen && <Modal imgSrc={modalImgSrc} onClose={handleCloseModal} />}
+        {isModalOpen && (
+          <Modal imgSrc={modalImgSrc} onClose={handleCloseModal} />
+        )}
       </>
     );
   }
@@ -99,17 +109,6 @@ function MovieList({ movies }) {
   // Wenn kein Film ausgewählt ist, wird die Liste angezeigt
   return (
     <>
-      {/* Suchfeld hinzufügen */}
-      {/* <div>
-        <input
-          type="text"
-          placeholder="Search for a movie"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={() => handleSearch(query)}>Search</button>
-      </div> */}
-
       {/* Filmliste */}
       <div className="liste">
         <ol>

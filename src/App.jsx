@@ -50,8 +50,13 @@ function App() {
 
   return (
     <div className="main">
-      <h1>Movie-App</h1>
-      <SearchBar onSearch={handleSearch} />
+       {/* Nur anzeigen, wenn keine Filme in der Liste sind */}
+       {movies.length === 0 && !loading && !error && (
+        <>
+          <h1>Movie-App</h1>
+          <SearchBar onSearch={handleSearch} />
+        </>
+      )}
       {!error && <MovieList movies={movies} />}
       {loading && <p>Daten werden geladen...</p>}
       {error && <p>Diesen Titel gibt es nicht</p>}
